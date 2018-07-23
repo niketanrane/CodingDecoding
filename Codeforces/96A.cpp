@@ -9,13 +9,13 @@ int main()
     char a[105];
     cin >> a;
     int n = strlen(a);
-    int cnt = 0;
+    int cnt = 1;
     for(int i = 1; i < n; i++){
         if(a[i] == a[i-1]){
             cnt++;
         }
         else{
-            cnt = 0;
+            cnt = 1;
         }
         if(cnt >= 7){
             ans = "YES";
