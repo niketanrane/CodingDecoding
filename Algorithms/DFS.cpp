@@ -13,8 +13,8 @@
 */
 using namespace std;
 
-bool vis[1000];
-vector<int> v[1000];
+bool vis[100009];
+vector<int> v[100009];
 
 int dfs(int s){
     stack<int>st;
@@ -23,7 +23,7 @@ int dfs(int s){
     while(!st.empty()){
         int cur = st.top();
         st.pop();
-        cout << " Current Node is" << cur << endl;
+        //cout << " Current Node is" << cur << endl;
         for(int i = 0; i < v[cur].size(); i++){
             int ch = v[cur][i];
             if(vis[ch] == false){
@@ -38,13 +38,23 @@ int main()
 {
     int n, e, x, y, i;
     scanf("%d %d", &n, &e);
-    for(i =0; i < e; i++){
+    for(i = 0; i < e; i++){
         scanf("%d %d", &x, &y);
         v[x].push_back(y);
         v[y].push_back(x);
     }
     //Assuming all nodes are connected
-    dfs(0);
+    int cnt = 0;
+    cin >> cnt;
+    cnt = 0;
+    for(i = 1; i < n; i++){
+        if(vis[i] == false){
+            dfs(i);
+            //cout << "cnt inc" << endl;
+            cnt++;
+        }
+    }
+    cout << cnt-1 << endl;
     return 0;
 }
 
